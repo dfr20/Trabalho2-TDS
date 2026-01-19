@@ -1,0 +1,139 @@
+/* Estilos Globais - Portal de Notícias React */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+/* Estilos para seções */
+section {
+  margin-bottom: 48px;
+}
+
+section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+/* Estilos de tabela */
+table {
+  width: 100%;
+  margin-top: 10px;
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 8px 10px;
+  text-align: left;
+}
+
+th {
+  background: #f2f2f2;
+}
+
+caption {
+  caption-side: top;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+/* Estilos para details/summary */
+details {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+details summary {
+  cursor: pointer;
+  color: #007bff;
+  font-weight: bold;
+}
+
+/* Estilos para mark */
+mark {
+  background: #ffe066;
+  padding: 0 3px;
+  border-radius: 2px;
+  line-height: 1.5em;
+}
+
+/* Responsivo - Tablets */
+@media (max-width: 768px) {
+  section h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Responsivo - Smartphones */
+@media (max-width: 576px) {
+  section {
+    margin-bottom: 32px;
+  }
+
+  section h2 {
+    font-size: 1.3rem;
+    margin-bottom: 16px;
+  }
+
+  .card-body {
+    padding: 16px;
+  }
+
+  .accordion-button {
+    font-size: 0.9rem;
+    padding: 12px;
+  }
+
+  .accordion-body {
+    font-size: 0.85rem;
+    padding: 12px;
+  }
+
+  table {
+    font-size: 0.85rem;
+  }
+
+  th, td {
+    padding: 6px 8px;
+  }
+
+  .card-title {
+    font-size: 1rem !important;
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+  }
+
+  .badge {
+    font-size: 0.75rem;
+  }
+}
+
+/* Dispositivos muito pequenos */
+@media (max-width: 375px) {
+  section h2 {
+    font-size: 1.2rem;
+  }
+}

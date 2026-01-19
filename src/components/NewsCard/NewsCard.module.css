@@ -1,0 +1,50 @@
+/* CSS Module para NewsCard */
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Classe CSS dinâmica - aplicada quando isHovered é true */
+.hovered {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+.imageContainer {
+  margin: 0;
+  overflow: hidden;
+}
+
+.imageContainer img {
+  transition: transform 0.3s ease;
+}
+
+.card:hover .imageContainer img {
+  transform: scale(1.05);
+}
+
+.details {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.details summary {
+  cursor: pointer;
+  color: #007bff;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+.details summary:hover {
+  color: #0056b3;
+}
+
+/* Responsivo */
+@media (max-width: 576px) {
+  .card {
+    border-radius: 8px;
+  }
+}
