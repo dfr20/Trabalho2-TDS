@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 // Importação de componentes
 import Header from './components/Header/Header';
@@ -110,15 +110,23 @@ function App() {
 
         {/* Rotas da aplicação */}
         <Routes>
-          {/* Rota Home - passa user e greeting como props */}
+          {/* Rota Home - protegida, redireciona para login se não logado */}
           <Route
             path="/"
-            element={<Home user={user} greeting={greeting} />}
+            element={
+              user.logado
+                ? <Home user={user} greeting={greeting} />
+                : <Navigate to="/login" replace />
+            }
           />
-          {/* Rota Login - passa função onLogin como prop */}
+          {/* Rota Login - redireciona para home se já logado */}
           <Route
             path="/login"
-            element={<Login onLogin={handleLogin} />}
+            element={
+              user.logado
+                ? <Navigate to="/" replace />
+                : <Login onLogin={handleLogin} />
+            }
           />
         </Routes>
 

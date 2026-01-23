@@ -1,0 +1,194 @@
+/* CSS Modules - Classes com escopo local */
+
+.container {
+  padding: 20px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #3498db;
+}
+
+.newsList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.newsItem {
+  padding: 15px;
+  background: white;
+  border-radius: 8px;
+  border-left: 4px solid #3498db;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Classes dinâmicas baseadas em estado */
+.newsItemHovered {
+  transform: translateX(10px);
+  box-shadow: 0 5px 20px rgba(52, 152, 219, 0.3);
+  border-left-color: #e74c3c;
+}
+
+.newsItemSelected {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  color: white;
+  border-left-color: #e74c3c;
+}
+
+.newsItemSelected .newsTitle {
+  color: white;
+}
+
+.newsItemSelected .newsDescription {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.newsTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 5px;
+  transition: color 0.3s ease;
+}
+
+.newsDescription {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  margin-bottom: 8px;
+  transition: color 0.3s ease;
+}
+
+.newsMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.category {
+  padding: 3px 10px;
+  border-radius: 15px;
+  color: white;
+  font-weight: 500;
+}
+
+.date {
+  color: #95a5a6;
+}
+
+/* Estado de loading */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  color: #7f8c8d;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #ecf0f1;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Estado de erro */
+.error {
+  padding: 20px;
+  background: #fee;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+  color: #721c24;
+  text-align: center;
+}
+
+.retryButton {
+  margin-top: 10px;
+  padding: 8px 20px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.retryButton:hover {
+  background: #c0392b;
+}
+
+/* Formulário de comentário */
+.commentForm {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.commentInput {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  transition: border-color 0.3s ease;
+}
+
+.commentInput:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+.submitButton {
+  padding: 10px 25px;
+  background: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submitButton:hover {
+  background: #219a52;
+  transform: translateY(-2px);
+}
+
+.submitButton:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Mensagem de sucesso */
+.successMessage {
+  padding: 15px;
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 8px;
+  color: #155724;
+  margin-top: 15px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

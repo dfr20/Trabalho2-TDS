@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styles from './Login.module.css';
 
 /**
@@ -27,6 +27,7 @@ function Login({ onLogin }) {
 
   // useState COMUM - mostrar erro
   const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   // Evento onChange - atualiza campos do formulário
   const handleChange = (e) => {
@@ -43,6 +44,14 @@ function Login({ onLogin }) {
     e.preventDefault();
 
     if (!loginForm.username || !loginForm.password) {
+      setErrorMessage('Por favor, preencha todos os campos.');
+      setShowError(true);
+      return;
+    }
+
+    // Valida credenciais (apenas admin/admin)
+    if (loginForm.username !== 'admin' || loginForm.password !== 'admin') {
+      setErrorMessage('Credenciais inválidas. Use admin/admin.');
       setShowError(true);
       return;
     }
@@ -74,7 +83,7 @@ function Login({ onLogin }) {
               {/* Mensagem de erro - Renderização condicional */}
               {showError && (
                 <div className="alert alert-danger" role="alert">
-                  Por favor, preencha todos os campos.
+                  {errorMessage}
                 </div>
               )}
 
@@ -153,12 +162,6 @@ function Login({ onLogin }) {
             </div>
           </div>
 
-          {/* Link para voltar */}
-          <div className="text-center mt-3">
-            <Link to="/" className="btn btn-outline-secondary">
-              <i className="bi bi-arrow-left me-2"></i>Voltar ao Portal
-            </Link>
-          </div>
         </div>
       </section>
     </main>
