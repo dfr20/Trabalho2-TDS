@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Login.module.css';
 
@@ -28,6 +28,16 @@ function Login({ onLogin }) {
   // useState COMUM - mostrar erro
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+
+  // useEffect - Restaura username salvo quando "Lembrar-me" foi marcado anteriormente
+  useEffect(() => {
+    const remembered = localStorage.getItem('rememberMe');
+    const savedUsername = localStorage.getItem('savedUsername');
+    if (remembered === 'true' && savedUsername) {
+      setLoginForm(prev => ({ ...prev, username: savedUsername }));
+      setRememberMe(true);
+    }
+  }, []);
 
   // Evento onChange - atualiza campos do formulário
   const handleChange = (e) => {
@@ -59,6 +69,15 @@ function Login({ onLogin }) {
     // Salva no localStorage
     localStorage.setItem('isLoggedIn', 'true');
     localStorage.setItem('username', loginForm.username);
+
+    // Salva ou remove username baseado no checkbox "Lembrar-me"
+    if (rememberMe) {
+      localStorage.setItem('rememberMe', 'true');
+      localStorage.setItem('savedUsername', loginForm.username);
+    } else {
+      localStorage.removeItem('rememberMe');
+      localStorage.removeItem('savedUsername');
+    }
 
     // Chama função passada por prop
     onLogin(loginForm.username);

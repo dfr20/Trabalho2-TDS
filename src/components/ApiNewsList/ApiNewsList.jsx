@@ -12,7 +12,7 @@ import styles from './ApiNewsList.module.css';
  * - Classes CSS dinâmicas baseadas em estado
  */
 function ApiNewsList() {
-  // Custom hook para GET das notícias da API
+  // Custom hook para GET das noAPI
   const { data, loading, error, postData, refetch } = useApi('/api/noticias');
 
   // Estados locais para interatividade
@@ -29,16 +29,18 @@ function ApiNewsList() {
 
     setPosting(true);
     try {
-      await postData('/api/comentarios', {
+      // Usa postData do custom hook - agora não sobrescreve mais o data
+      const result = await postData('/api/comentarios', {
         noticiaId: selectedId,
         texto: comment,
         autor: 'Usuário Anônimo'
       });
+      console.log('✅ Comentário enviado com sucesso!', result);
       setComment('');
       setCommentSuccess(true);
       setTimeout(() => setCommentSuccess(false), 3000);
     } catch (err) {
-      console.error('Erro ao enviar comentário:', err);
+      console.error('❌ Erro ao enviar comentário:', err);
     } finally {
       setPosting(false);
     }

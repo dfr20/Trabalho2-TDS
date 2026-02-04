@@ -73,7 +73,7 @@ function useApi(url, options = {}) {
       }
 
       const result = await response.json();
-      setData(result);
+      // NÃO sobrescreve data do GET - apenas retorna o resultado do POST
       return result;
     } catch (err) {
       setError(err.message);
